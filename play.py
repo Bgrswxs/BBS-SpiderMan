@@ -1,14 +1,9 @@
-import requests
-import socket
-from bs4 import BeautifulSoup as bs
-socket.setdefaulttimeout(5)
+import SpiderMan
+import time
 
-
-url = "http://www.sina.com"
-r = requests.get(url)
-print(type(r.content))
-a = bytes()
-soup = bs(a, 'html.parser')
-print(soup.title)
-for e in soup.find_all('a'):
-    print(e)
+begin = time.time()
+url = 'http://bbs.csdn.net/forums/JavaScript'
+sm = SpiderMan.SpiderMan()
+sm.craw(url)
+end = time.time()
+print("\n耗时：{:.6} 秒".format(end-begin))
